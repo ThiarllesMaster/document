@@ -15,20 +15,17 @@ import springfox.documentation.swagger2.annotations.EnableSwagger2;
 @Configuration
 @EnableSwagger2
 public class SwaggerConfig {
-    /**
-     * Every Docket bean is picked up by the swagger-mvc framework - allowing for multiple
-     * swagger groups i.e. same code base multiple swagger resource listings.
-     */
-    @Bean
+
+	@Bean
     public Docket customDocket(){
         return new Docket(DocumentationType.SWAGGER_2)
                 .select()
                 .apis(RequestHandlerSelectors.basePackage("com.documentation.demo"))
-                .paths(PathSelectors.regex("/v1/.*"))
+                .paths(PathSelectors.regex("/.*"))
                 .build().apiInfo(apiInfo());
     }
     private ApiInfo apiInfo() {
-        return new ApiInfoBuilder().title("Serviços Disponíveis no sistema UPoem").version("1.0.0").build();
+        return new ApiInfoBuilder().title("Services available at Upoem system").version("1.0.0").build();
     }
 
  }
